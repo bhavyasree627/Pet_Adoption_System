@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div  style="background-color: rgb(193, 230, 232);">
+    <h2 style="text-align:center;color:black;margin-bottom:2%;padding:1px;background-color: rgb(193, 230, 232);"><b>{{ pet.name|capfirst }}</b></h2>
+    <p style="color:black;text-align:center;"><b>{{ pet.species }}</b></p>
+    {% if pet.breed %}
+        <p style="color:black;text-align:center;"><b>Breed:</b>{{ pet.breed }}</p>
+    {% endif %}
+    {% if pet.age %}
+        <p style="color:black;text-align:center;"><b>Age:</b>{{ pet.age }}</p>
+    {% endif %}
+    {% if pet.sex %}
+        <p style="color:black;text-align:center;"><b>Sex: </b>{{ pet.sex }}</p>
+    {% endif %}
+    {% if pet.vaccinations.all %}
+        <p style="color:black;text-align:center;"><b>Vaccinations for: </b></p>
+        <ul>
+            {% for vaccination in pet.vaccinations.all %}
+                <li style="color:black;text-align:center;">{{ vaccination.name }}</li>
+            {% endfor %}
+        </ul>
+        <p></p>
+    {% endif %}
+    <p style="color:black;text-align:center;"><b>Submitted by: </b>{{ pet.submitter }}</p>
+    <p style="color:black;text-align:center;"><b>Submitted on: </b>{{ pet.submission_date|date:"M d Y" }}</p>
+    <p style="color:black;text-align:center;">{{ pet.description }}</p>
+</div>
+{% endblock %}

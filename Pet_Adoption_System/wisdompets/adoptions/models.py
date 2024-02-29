@@ -11,6 +11,7 @@ class Pet(models.Model):
     submission_date = models.DateTimeField()
     age = models.IntegerField(null=True)
     vaccinations = models.ManyToManyField('Vaccine', blank=True)
+    pet_image=models.ImageField(null=True,upload_to="pet")
 
 class Vaccine(models.Model):
     name = models.CharField(max_length=50)

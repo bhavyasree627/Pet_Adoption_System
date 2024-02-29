@@ -1,17 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
-<div>
-    {% for pet in pets %}
-        <div class="petname" style="margin-bottom:4%;">
-            <a href="{% url 'pet_detail' pet.id %}">
-            <h3 style="text-align:center;color:black;margin:2px;padding:1px;background-color: rgb(193, 230, 232);"><b>{{ pet.name|capfirst }}</b></h3>
-            </a>
-            <p style="text-align: center;"><b style="color:black;">{{ pet.species }}</b></p>
-            {% if pet.breed %}
-                <p style="text-align:center;color:black;"><b>Breed: </b>{{ pet.breed }}</p>
-            {% endif %}
-            <p class="hidden" style="text-align:center;color:black;">{{ pet.description }}</p>
-        </div>
-    {% endfor %}
+<div class=container style="margin-left:15%;">
+    <a href='all_pets/'><button style="margin-bottom:5%;" type="button" class="btn btn-info">View All Pets</button></a>
+    <a href="add_pet/"><button style="margin-bottom:5%;" type="button" class="btn btn-info">Add New Pet</button></a>
 </div>
 {% endblock %}
+

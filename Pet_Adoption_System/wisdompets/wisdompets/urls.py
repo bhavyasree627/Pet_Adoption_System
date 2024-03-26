@@ -4,6 +4,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from adoptions import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import url
+from django.views.static import serve
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -15,7 +17,9 @@ urlpatterns = [
     path('register/',views.register_page,name="register_page"),
     path('login/',views.login_page,name="login_page"),
     path('logout/',views.logout_page,name="logout_page"),
-    path('adoptions/<int:pet_id>/', views.pet_detail, name='pet_detail')
+    path('adoptions/<int:pet_id>/', views.pet_detail, name='pet_detail'),
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
 ]
 
 

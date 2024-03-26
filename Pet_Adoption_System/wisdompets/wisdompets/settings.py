@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'z#*i00+q9skyc6lgt3_tqjzq_peyw!9@-iyp^pg!0s7un5mff$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['.vercel.app','.now.sh']
 
 
 # Application definition
@@ -132,3 +132,9 @@ MEDIA_URL='/media/'
 # settings.py
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import os
+STATIC_URL = '/static/'
+STATICFILES_DIRS = os.path.join(BASE_DIR,'public/static'),
+STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles_build','static')
+
